@@ -28,6 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
                 android:padding="0dp"
+                android:gravity="right"
                 android:layout_gravity="center_horizontal">
 
                 <ImageButton
@@ -37,7 +38,8 @@
                     android:background="@android:color/transparent"
                     android:src="@drawable/map_icon"
                     android:scaleType="centerCrop"
-                    android:layout_gravity="right"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center_vertical"
                     />
             </LinearLayout>
 
@@ -58,53 +60,66 @@
                 android:layout_height="40dp"
                 android:background="#33ffffff"
                 android:paddingTop="5dp"
+                android:gravity="right"
                 android:layout_marginTop="100dp"
                 android:weightSum="1">
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="10dp"
-                    android:src="@drawable/star_black_icon"
-                    android:layout_marginRight="5dp"
-                    android:id="@+id/star1" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    >
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/star_black_icon"
+                        android:layout_marginRight="5dp"
+                        android:id="@+id/star1" />
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/star_black_icon"
-                    android:layout_marginRight="5dp"
-                    android:id="@+id/star2" />
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/star_black_icon"
+                        android:layout_marginRight="5dp"
+                        android:id="@+id/star2" />
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/star_black_icon"
-                    android:layout_marginRight="5dp"
-                    android:id="@+id/star3" />
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/star_black_icon"
+                        android:layout_marginRight="5dp"
+                        android:id="@+id/star3" />
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/star_black_icon"
-                    android:layout_marginRight="5dp"
-                    android:id="@+id/star4" />
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/star_black_icon"
+                        android:layout_marginRight="5dp"
+                        android:id="@+id/star4" />
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/star_black_icon"
-                    android:layout_marginRight="5dp"
-                    android:id="@+id/star5" />
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/star_black_icon"
+                        android:layout_marginRight="5dp"
+                        android:id="@+id/star5" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingRight="10dp"
+                    android:gravity="right">
+                    <ImageButton
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:id="@+id/saveButton"
+                        android:src="@drawable/save_icon"
+                        android:scaleType="centerCrop"
+                        android:layout_marginLeft="50dp"
+                        android:background="@android:color/transparent"/>
+                </LinearLayout>
 
-                <ImageButton
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:id="@+id/saveButton"
-                    android:src="@drawable/save_icon"
-                    android:scaleType="centerCrop"
-                    android:layout_marginLeft="50dp"
-                    android:background="@android:color/transparent"/>
+
             </LinearLayout>
 
         </LinearLayout>
@@ -114,34 +129,47 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_weight="1">
-
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Large Text"
+                    android:layout_marginLeft="20dp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="50dp"
+                    android:gravity="center"
+                    android:id="@+id/hotelTitleSmall" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Large Text"
-                android:layout_marginLeft="20dp"
-                android:layout_gravity="center"
-                android:layout_marginRight="50dp"
-                android:gravity="center"
-                android:id="@+id/hotelTitleSmall" />
+                android:paddingRight="10dp"
+                android:gravity="right"
+                >
+                <ImageButton
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/callBtn"
+                    android:src="@drawable/call_icon"
+                    android:layout_gravity="center_vertical"
+                    android:scaleType="centerInside"
+                    android:background="@android:color/transparent"/>
 
-            <ImageButton
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:id="@+id/callBtn"
-                android:src="@drawable/call_icon"
-                android:scaleType="centerInside"
-                android:background="@android:color/transparent"/>
+                <ImageButton
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/link"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/link_icon"
+                    android:layout_gravity="center_vertical"
+                    android:scaleType="centerInside"
+                    android:background="@android:color/transparent"/>
+            </LinearLayout>
 
-            <ImageButton
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:id="@+id/link"
-                android:layout_marginLeft="10dp"
-                android:src="@drawable/link_icon"
-                android:scaleType="centerInside"
-                android:background="@android:color/transparent"/>
+
         </LinearLayout>
 
         <TextView
@@ -168,15 +196,23 @@
                 android:layout_marginRight="50dp"
                 android:gravity="center"
                 android:id="@+id/address" />
-
-            <ImageButton
-                android:layout_width="30dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/imageButton8"
-                android:layout_marginLeft="10dp"
-                android:src="@drawable/address_icon"
-                android:scaleType="centerInside"
-                android:background="@android:color/transparent" />
+                android:gravity="right"
+                android:paddingRight="10dp"
+                >
+                <ImageButton
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/imageButton8"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/address_icon"
+                    android:scaleType="centerInside"
+                    android:layout_gravity="center_vertical"
+                    android:background="@android:color/transparent" />
+            </LinearLayout>
+
         </LinearLayout>
 
         <TextView

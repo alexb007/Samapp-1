@@ -18,6 +18,7 @@ public class HotelsActivity extends Activity {
     ListView list;
     TextView tv;
     ArrayAdapter<String> adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

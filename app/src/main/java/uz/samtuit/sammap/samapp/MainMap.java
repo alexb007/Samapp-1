@@ -1,9 +1,13 @@
 package uz.samtuit.sammap.samapp;
 
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.AssetManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,6 +20,9 @@ import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 
 import com.mapbox.mapboxsdk.api.ILatLng;
+import com.mapbox.mapboxsdk.geometry.LatLng;
+import com.mapbox.mapboxsdk.overlay.Icon;
+import com.mapbox.mapboxsdk.overlay.Marker;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.MBTilesLayer;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.TileLayer;
 import com.mapbox.mapboxsdk.views.MapView;
@@ -28,14 +35,17 @@ import java.util.ArrayList;
 
 
 public class MainMap extends ActionBarActivity {
-    LinearLayout linLay,vertical;
-    HorizontalScrollView hscv;
-    Button newBtn;
+    private LinearLayout linLay,vertical;
+    private HorizontalScrollView hscv;
+    private Button newBtn;
     private ArrayList<MenuItems> Items = new ArrayList<MenuItems>();
-    Button btn;
-    boolean updateAvailable = true;
-    int height;
-    MapView mapView;
+    private Button btn;
+    private boolean updateAvailable = true;
+    private int height;
+    private MapView mapView;
+    private LocationManager locationManager;
+    private LocationListener locationListener;
+
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,10 +122,11 @@ public class MainMap extends ActionBarActivity {
                 }
             }
         });
+
         //MapView Settings
         mapView = (MapView)findViewById(R.id.mapview);
 
-        TileLayer mbTileLayer = new MBTilesLayer(this, "Sample.mbtiles");
+        TileLayer mbTileLayer = new MBTilesLayer(this, "samarkand.mbtiles");
         mapView.setTileSource(mbTileLayer);
         mapView.setMinZoomLevel(mapView.getTileProvider().getMinimumZoomLevel());
         mapView.setMaxZoomLevel(mapView.getTileProvider().getMaximumZoomLevel());
@@ -138,6 +149,38 @@ public class MainMap extends ActionBarActivity {
         });
         mapView.setUserLocationEnabled(true);
         mapView.setZoom(17);
+        //end
+
+        //Location Settings
+        locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+        locationListener = new LocationListener() {
+            @Override
+            public void onLocationChanged(Location location) {
+                Marker m = new Marker(mapView,"Here", "Your Current Location",new LatLng(location.getLatitude(),location.getLongitude()));
+                m.setIcon(new Icon(MainMap.this, Icon.Size.LARGE, "land-use", "00FF00"));
+                mapView.addMarker(m);
+            }
+
+            @Override
+            public void onStatusChanged(String provider, int status, Bundle extras) {
+
+            }
+
+            @Override
+            public void onProviderEnabled(String provider) {
+
+            }
+
+            @Override
+            public void onProviderDisabled(String provider) {
+
+            }
+        };
+        Marker m = new Marker(mapView,"Here", "Current Location", mapView.getUserLocation());
+        m.setIcon(new Icon(this, Icon.Size.LARGE, "land-use", "00FF00"));
+        mapView.addMarker(m);
+        //end
+
     }
 
     public static String readAsset(AssetManager mgr, String path) {
@@ -209,6 +252,7 @@ public class MainMap extends ActionBarActivity {
         }
         return intent;
     }
+
     public void HotelsRun() {
         Intent hotels = new Intent(MainMap.this,HotelsActivity.class);
         startActivity(hotels);

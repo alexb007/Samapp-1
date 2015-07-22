@@ -2,7 +2,6 @@ package uz.samtuit.sammap.samapp;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
@@ -40,6 +39,7 @@ class MyListAdapter extends ArrayAdapter<Hotels> {
         Hotels hotel = data[position];
         TextView name = (TextView) convertView.findViewById(R.id.title);
         TextView revs = (TextView) convertView.findViewById(R.id.reviewsCount);
+        TextView reviews = (TextView)convertView.findViewById(R.id.reviews);
         String Act = "drawable/star2",mainImg = "drawable/rasm";
         Typeface tf = Typeface.createFromAsset(context.getAssets(), "fonts/Roboto-Thin.ttf");
         ImageView mainImage = (ImageView)convertView.findViewById(R.id.image);
@@ -72,6 +72,9 @@ class MyListAdapter extends ArrayAdapter<Hotels> {
         revs.setTag("revs");
         name.setTag(hotel.Name);
         name.setTypeface(tf);
+        revs.setTypeface(tf);//Reviews Count
+        reviews.setTypeface(tf);//"Reviews" Text
+
         return convertView;
     }
 }

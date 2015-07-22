@@ -28,11 +28,12 @@
             android:textColor="#000"
             android:layout_height="wrap_content" android:layout_width="wrap_content"
             android:text = "Title"/>
-        <LinearLayout android:layout_width="fill_parent" android:layout_height="20dp"
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="40dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
-
-            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="5dp"
+            android:gravity="center_vertical"
+            android:padding="0dp"
             android:orientation="horizontal"
             >
             <ImageView
@@ -75,36 +76,41 @@
                 android:src="@drawable/star_white_icon"
                 android:background = "@android:color/transparent"
                 />
-            <TextView android:id="@+id/reviewsCount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1000"
-                android:textColor="#f00"
-                android:layout_marginRight="5dp"
-                android:textAlignment="center"
-                android:layout_gravity="right"
-                android:textSize="20sp"
-                />
-            <TextView android:id="@+id/reviews"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Reviews"
-                android:textAlignment="center"
-                android:layout_gravity="right"
-                android:textSize="12sp"
-                />
-            <ImageView
-                android:id="@+id/arrow"
-                android:layout_width="10dp"
-                android:layout_height="10dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="5dp"
-                android:src="@drawable/arrow"
-                android:scaleType="fitCenter"
-                android:adjustViewBounds="true"
-                android:layout_alignParentRight="true"
-                android:layout_gravity="right"
-                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="right"
+
+                >
+                <TextView android:id="@+id/reviewsCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:text="1000"
+                    android:textAlignment="textStart"
+                    android:paddingRight="5dp"
+                    android:textColor="#f00"
+                    android:textSize="20sp"
+                    android:textStyle="italic"
+                    />
+                <TextView android:id="@+id/reviews"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Reviews"
+                    android:textSize="12sp"
+                    />
+                <ImageView
+                    android:id="@+id/arrow"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/arrow"
+                    />
+            </LinearLayout>
+
         </LinearLayout>
 
 
