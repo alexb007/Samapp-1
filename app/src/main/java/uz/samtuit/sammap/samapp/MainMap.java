@@ -17,7 +17,9 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.SlidingDrawer;
 
 import com.mapbox.mapboxsdk.api.ILatLng;
 import com.mapbox.mapboxsdk.geometry.LatLng;
@@ -39,7 +41,8 @@ public class MainMap extends ActionBarActivity {
     private HorizontalScrollView hscv;
     private Button newBtn;
     private ArrayList<MenuItems> Items = new ArrayList<MenuItems>();
-    private Button btn;
+    private ImageView btn;
+    private SlidingDrawer slidingDrawer;
     private boolean updateAvailable = true;
     private int height;
     private MapView mapView;
@@ -90,8 +93,20 @@ public class MainMap extends ActionBarActivity {
         Items.add(item);
         item = new MenuItems(9,"About This App","drawable/about_app");
         Items.add(item);
-
-        hscv = (HorizontalScrollView)findViewById(R.id.menuScroll);
+        btn = (ImageView)findViewById(R.id.slideButton);
+        slidingDrawer = (SlidingDrawer)findViewById(R.id.slidingDrawer);
+        slidingDrawer.setOnDrawerOpenListener(new SlidingDrawer.OnDrawerOpenListener() {
+            @Override
+            public void onDrawerOpened() {
+                btn.setBackgroundResource(R.drawable.menu_down_arrow);
+            }
+        });
+        slidingDrawer.setOnDrawerCloseListener(new SlidingDrawer.OnDrawerCloseListener() {
+            @Override
+            public void onDrawerClosed() {
+                btn.setBackgroundResource(R.drawable.menu_up_arrow);
+            }
+        });
         linLay = (LinearLayout)findViewById(R.id.menuScrollLinear);
         linLay.post(new Runnable() {
             @Override
@@ -149,6 +164,7 @@ public class MainMap extends ActionBarActivity {
         });
         mapView.setUserLocationEnabled(true);
         mapView.setZoom(17);
+        mapView.setMapRotationEnabled(true);
         //end
 
         //Location Settings
@@ -176,9 +192,6 @@ public class MainMap extends ActionBarActivity {
 
             }
         };
-        Marker m = new Marker(mapView,"Here", "Current Location", mapView.getUserLocation());
-        m.setIcon(new Icon(this, Icon.Size.LARGE, "land-use", "00FF00"));
-        mapView.addMarker(m);
         //end
 
     }
